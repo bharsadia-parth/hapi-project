@@ -2,17 +2,16 @@
 
 const hapi = require("@hapi/hapi");
 const {userRoutes} = require("./routes/user-routes");
-const {getUser} = require("./controllers/user-controller")
+
 
 const init = async () => {
     const server = hapi.server({
-        port: process.env.PORT,
+        port: 8082,
         host: 'localhost'
     });
 
     server.start()
     .then((val) => {
-        console.log(userRoutes)
         console.log("hapi is listening on port:", server.info.port)
     })
     .catch((e) => {
@@ -20,11 +19,7 @@ const init = async () => {
     });
 
     server.route([
-       {
-         method: "GET", 
-         path: "/users",
-         handler: getUser,
-       }
+       ...userRoutes
     ])
 }
 //

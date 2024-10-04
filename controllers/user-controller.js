@@ -1,5 +1,10 @@
 const getUser = async (req, res) => {
-    console.log("request reached");
+    try{
+
+        return res.response({"msg": "msg"}).code(200)
+    }catch(e){
+        console.log(e)
+    }
 }
 
 module.exports = {
