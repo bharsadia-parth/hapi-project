@@ -10,4 +10,4 @@ RUN npm i
 
 EXPOSE 8082
 
-CMD [ "npm", "run", "dev" ]
+CMD [ "npm", "start" ]
