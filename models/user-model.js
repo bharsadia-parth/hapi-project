@@ -23,6 +23,10 @@ const UserModel = sequelize.define('users', {
         type:  DataTypes.STRING,
         allowNull: false,
     },
+    "password": {
+        type:  DataTypes.CHAR(64),
+        allowNull: false,
+    },
 })
 
 sequelize.sync();

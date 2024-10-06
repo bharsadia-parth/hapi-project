@@ -1,5 +1,6 @@
 
 const {sequelize} = require("../config/sequelize")
+const {generatePassword} = require("../utils/password-generator");
 const { UserModel } = require("../models/user-model")
 
 const getUser = async (req, res) => {
@@ -10,7 +11,8 @@ const getUser = async (req, res) => {
             let data = await UserModel.findOne({
                 where: {
                     id
-                }
+                },
+                attributes : {exclude:  "password"}
             });
 
             if(!data) return res.response({err: `user with id ${id} not found`}).code(400);
@@ -22,7 +24,10 @@ const getUser = async (req, res) => {
             let data = await UserModel.findAll({
                 limit ,
                 offset,
-            })
+                attributes : {exclude:  "password"}
+            },
+            
+        )
             let count = data.length;
             return res.response({count, data}).code(200)
         }
@@ -37,12 +42,14 @@ const createUser = async (req, res) => {
         if(!req.payload) {
             return res.response({"err": "payload not found"}).code(400);
         };
-        let {fname, lname, mobile, email} = req.payload;
+        let {fname, lname, mobile, email, password} = req.payload;
+        password = await generatePassword(password);
         let user = await UserModel.create({
            fname,
            lname,
            mobile,
-           email
+           email,
+           password
         });
         return res.response(
             {
