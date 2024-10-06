@@ -3,6 +3,7 @@
 const hapi = require("@hapi/hapi");
 const {userRoutes} = require("./routes/user-routes");
 const env = require("dotenv").config({path: "./.env"});
+const {initDb} = require("./config/sequelize")
 
 
 const init = async () => {
@@ -18,6 +19,9 @@ const init = async () => {
     .catch((e) => {
         console.log("failed to start hapi: ", e)
     });
+
+    await initDb();
+
 
     server.route([
        ...userRoutes

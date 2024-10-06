@@ -12,7 +12,14 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/hapi": "^21.3.10",
+    "@sequelize/mysql": "^7.0.0-alpha.43",
     "dotenv": "^16.4.5",
-    "nodemon": "^3.1.7"
+    "mysql2": "^3.11.3",
+    "nodemon": "^3.1.7",
+    "sequelize": "^6.37.4"
+  },
+  "devDependencies": {
+    "@types/sequelize": "^4.28.20",
+    "eslint": "^9.12.0"
   }
 }
