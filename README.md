@@ -32,6 +32,6 @@ GET       /user/:id	Get a specific user
 
 GET       /user?limit=10&offset=0  Get list of users (limit & offset are optional; Default limit = 10 and offset = 0)
 
-PUT	      /user/:id	Update an existing item
+PUT	      /user/:id	Update an existing user
 
-DELETE	  /user/:id	Delete an item
+DELETE	  /user/:id	Delete an user
