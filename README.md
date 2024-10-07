@@ -1,11 +1,14 @@
 HAPI USER CRUD OPERATION PROJECT
 
+-----------------------------
 STEPS TO SETUP
 -----------------------------
 1. Install Dependency
-```npm install```
+```
+npm install
+```
 
-2. To run this project, you need to create an .env file
+3. To run this project, you need to create an .env file
 
 ```
 PORT=8082
@@ -20,7 +23,9 @@ MYSQL_PASSWORD=mysql-user-password
 npm run start
 ```
 
-Features:
+-----------------------------
+FEATURES
+-----------------------------
 
 CREATE - Create user.
 
@@ -39,4 +44,26 @@ DELETE - Delete user.
 | DELETE | /user/:id	| Delete an user |
 
 
+User Model
 
+| Method | Type | Nullable | Description |
+|--------|----------|----------| ----------- |
+| fname | String | false | First Name of user |
+| lname | String | false | Last Name of user |
+| email | String | false | Email Id of user |
+| mobile | String | false | Mobile number of user |
+| password | String | false | Secret Character combination for verifying user identity |
+
+---------------------------------
+STEPS TO START DOCKER CONTAINER
+--------------------------------
+
+1. Build Docker image
+   ```
+   docker build -t <image-name> .
+   ```
+
+3. Start Docker container
+   ```
+   docker run --env-file </path-to-.env-file> -p 8082:8082 <you can use PORT specified in .env file> <image-name>
+   ```
