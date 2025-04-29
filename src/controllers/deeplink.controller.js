@@ -85,6 +85,38 @@ const getDeeplinkList = async (req, res) => {
   }
 };
 
+const updateDeeplink = async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      return res.response({ err: "Invalid id" }).code(400);
+    }
+    const { path, destination_type, description, params, redirect_install } =
+      req.payload;
+    const result = await deepLinkModel.update(
+      { path, destination_type, description, params, redirect_install },
+      { where: { id } }
+    );
+    if(!result[0]){
+        return res
+        .response({
+          err: `Deeplink with id '${id}' not found`,
+        })
+        .code(400);     
+    }
+    return res
+      .response({
+        msg: "Deeplink updated successfully",
+      })
+      .code(200);
+  } catch (e) {
+    if(e instanceof DatabaseError){
+        return res.response({ err: "Failed to update deeplink", msg: e.message }).code(400);    
+    }
+    return res.response({ err: "Failed to update deeplink" }).code(500);
+  }
+};
+
 const deleteDeeplink = async (req, res) => {
   try {
     const { id } = req.params;
@@ -110,4 +142,5 @@ module.exports = {
   creeateDeeplink,
   getDeeplinkList,
   deleteDeeplink,
+  updateDeeplink,
 };

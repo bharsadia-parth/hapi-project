@@ -1,4 +1,4 @@
-const {getDeeplink, creeateDeeplink, getDeeplinkList, deleteDeeplink} = require("../controllers/deeplink.controller");
+const {getDeeplink, creeateDeeplink, updateDeeplink, getDeeplinkList, deleteDeeplink} = require("../controllers/deeplink.controller");
 const deeplinkRoutes = [
     {
         method: "GET", 
@@ -12,6 +12,11 @@ const deeplinkRoutes = [
     },
     {
         method: "POST", 
+        path: "/deeplink/{id}",
+        handler: updateDeeplink,
+    },
+    {
+        method: "PUT", 
         path: "/deeplink",
         handler: creeateDeeplink,
     },
