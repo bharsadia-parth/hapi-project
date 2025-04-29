@@ -1,9 +1,9 @@
 
-const {sequelize} = require("../config/sequelize")
-const {generatePassword} = require("../utils/password-generator");
-const { UserModel } = require("../models/user-model")
+import {sequelize} from "../config/sequelize.js";
+import {generatePassword} from "../utils/password-generator.js";
+import { UserModel } from "../models/user-model.js";
 
-const getUser = async (req, res) => {
+export const getUser = async (req, res) => {
     try{
         if(req.params.id){
             let id = req.params.id;
@@ -37,7 +37,7 @@ const getUser = async (req, res) => {
     }
 }
 
-const createUser = async (req, res) => {
+export const createUser = async (req, res) => {
     try{
         if(!req.payload) {
             return res.response({"err": "payload not found"}).code(400);
@@ -63,7 +63,7 @@ const createUser = async (req, res) => {
     }
 }
 
-const updateUser = async (req, res) => {
+export const updateUser = async (req, res) => {
     try{
         
         let id = parseInt(req.params.id);
@@ -98,7 +98,7 @@ const updateUser = async (req, res) => {
     }
 }
 
-const deleteUser = async (req, res) => {
+export const deleteUser = async (req, res) => {
     try{
         let id = parseInt(req.params.id);
         if(isNaN(id)) {
@@ -117,11 +117,4 @@ const deleteUser = async (req, res) => {
         console.log(e); 
         return res.response({"err": e}).code(500)
     }
-}
-
-module.exports = {
-    getUser,
-    createUser,
-    deleteUser,
-    updateUser
 }

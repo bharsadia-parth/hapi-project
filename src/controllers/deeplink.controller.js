@@ -1,7 +1,7 @@
-const { deepLinkModel } = require("../models/deeplink.model");
-const { ValidationError, DatabaseError } = require("sequelize");
-const { generateShortcode } = require("../utils/shortcode-generator");
-const getDeeplink = async (req, res) => {
+import { deepLinkModel } from "../models/deeplink.model.js";
+import { ValidationError, DatabaseError } from "sequelize";
+import { generateShortcode } from "../utils/shortcode-generator.js";
+export const getDeeplink = async (req, res) => {
   try {
     const { shortcode } = req.params;
     const result = await deepLinkModel.findOne({ where: { shortcode } });
@@ -25,7 +25,7 @@ const getDeeplink = async (req, res) => {
   }
 };
 
-const creeateDeeplink = async (req, res) => {
+export const creeateDeeplink = async (req, res) => {
   try {
     const { path, destination_type, description, params, redirect_install } =
       req.payload;
@@ -60,7 +60,7 @@ const creeateDeeplink = async (req, res) => {
   }
 };
 
-const getDeeplinkList = async (req, res) => {
+export const getDeeplinkList = async (req, res) => {
   try {
     const limit = req.query.limit ? parseInt(req.query.limit) : 10;
     const offset = req.query.query ? parseInt(req.query.query) : 0;
@@ -85,7 +85,7 @@ const getDeeplinkList = async (req, res) => {
   }
 };
 
-const updateDeeplink = async (req, res) => {
+export const updateDeeplink = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
     if (isNaN(id)) {
@@ -117,7 +117,7 @@ const updateDeeplink = async (req, res) => {
   }
 };
 
-const deleteDeeplink = async (req, res) => {
+export const deleteDeeplink = async (req, res) => {
   try {
     const { id } = req.params;
     if (!id || !parseInt(id)) {
@@ -137,10 +137,3 @@ const deleteDeeplink = async (req, res) => {
   }
 };
 
-module.exports = {
-  getDeeplink,
-  creeateDeeplink,
-  getDeeplinkList,
-  deleteDeeplink,
-  updateDeeplink,
-};

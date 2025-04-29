@@ -1,13 +1,13 @@
-const { Sequelize } = require("sequelize");
-require('dotenv').config()
+import { Sequelize } from "sequelize";
+import dotenv from "dotenv";
+dotenv.config();
 
-console.log("mysql port", process.env.MYSQL_PORT)
-const sequelize = new Sequelize(process.env.MYSQL_DATABASE, process.env.MYSQL_USERNAME, process.env.MYSQL_PASSWORD, {
+export const sequelize = new Sequelize(process.env.MYSQL_DATABASE, process.env.MYSQL_USERNAME, process.env.MYSQL_PASSWORD, {
     host: process.env.MYSQL_HOST,
     dialect: 'mysql'
 })
 
-const initDb = async () => {
+export const initDb = async () => {
 
     sequelize.authenticate().then((val) => {
         console.log("Database connected successfully")
@@ -18,4 +18,3 @@ const initDb = async () => {
 
     sequelize.sync();
 }
-module.exports = { initDb, sequelize }

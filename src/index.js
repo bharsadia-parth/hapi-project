@@ -1,11 +1,12 @@
 'use strict';
-const {deeplinkRoutes} =  require("./routes/deeplink.routes")
+import {deeplinkRoutes} from "./routes/deeplink.routes.js"
 
-const hapi = require("@hapi/hapi");
-const {userRoutes} = require("./routes/user-routes");
-const env = require("dotenv").config({path: "./.env"});
-const {initDb} = require("./config/sequelize")
+import hapi from "@hapi/hapi";
+import {userRoutes} from "./routes/user-routes.js";
+import {initDb} from "./config/sequelize.js";
 
+import env from "dotenv";
+env.config({path: "./.env"});
 
 const init = async () => {
     const server = hapi.server({

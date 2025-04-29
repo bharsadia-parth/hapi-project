@@ -1,5 +1,5 @@
-const {getDeeplink, creeateDeeplink, updateDeeplink, getDeeplinkList, deleteDeeplink} = require("../controllers/deeplink.controller");
-const deeplinkRoutes = [
+import {getDeeplink, creeateDeeplink, updateDeeplink, getDeeplinkList, deleteDeeplink} from "../controllers/deeplink.controller.js";
+export const deeplinkRoutes = [
     {
         method: "GET", 
         path: "/deeplink",
@@ -27,6 +27,5 @@ const deeplinkRoutes = [
     },
 ]
 
-module.exports = {
-    deeplinkRoutes
-}  
+
+

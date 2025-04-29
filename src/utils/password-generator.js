@@ -1,13 +1,10 @@
-const bcrypt = require("bcryptjs");
+import  bcrypt from "bcryptjs";
 
 
-const generatePassword = async (password) => {
+export const generatePassword = async (password) => {
 
     let response = await bcrypt.hash(password, 10)
     console.log("response", response)
     return response;
 }
 
-module.exports = {
-    generatePassword
-}

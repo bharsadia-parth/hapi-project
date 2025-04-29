@@ -1,5 +1,5 @@
-const {getUser, createUser, deleteUser, updateUser} = require("../controllers/user-controller");
-const  userRoutes = [
+import {getUser, createUser, deleteUser, updateUser} from "../controllers/user-controller.js";
+export const  userRoutes = [
     {
         method: "GET", 
         path: "/user/{id?}",
@@ -21,6 +21,3 @@ const  userRoutes = [
         handler: updateUser,
     }
 ];
-module.exports = {
-    userRoutes
-}

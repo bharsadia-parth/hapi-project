@@ -1,6 +1,6 @@
-const { DataTypes } = require("sequelize")
-const {sequelize} = require("../config/sequelize")
-const UserModel = sequelize.define('users', {
+import { DataTypes } from "sequelize";
+import {sequelize} from "../config/sequelize.js";
+export const UserModel = sequelize.define('users', {
     "id": {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -31,4 +31,3 @@ const UserModel = sequelize.define('users', {
 
 sequelize.sync();
 
-module.exports = { UserModel }

@@ -1,6 +1,6 @@
-const crypto = require('crypto');
+import crypto from 'crypto';
 
- function generateShortcode(urlPath) {
+ export function generateShortcode(urlPath) {
 
     if(!urlPath){
         throw "Url path not found"
@@ -20,6 +20,3 @@ const crypto = require('crypto');
   return shortCode;
 }
 
-module.exports = {
-    generateShortcode
-}

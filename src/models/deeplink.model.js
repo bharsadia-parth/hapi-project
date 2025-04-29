@@ -1,6 +1,6 @@
-const { sequelize } = require("../config/sequelize");
-const { DataTypes } = require("sequelize");
-const deepLinkModel = sequelize.define("deeplinks", {
+import { sequelize } from "../config/sequelize.js";
+import { DataTypes } from "sequelize";
+export const deepLinkModel = sequelize.define("deeplinks", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -40,6 +40,4 @@ const deepLinkModel = sequelize.define("deeplinks", {
 }, );
 
 sequelize.sync();
-module.exports = {
-  deepLinkModel,
-};
+
