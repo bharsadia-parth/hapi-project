@@ -1,4 +1,4 @@
-const {getUser, createUser, deleteUser, updateUser} = require("./../controllers/user-controller");
+const {getUser, createUser, deleteUser, updateUser} = require("../controllers/user-controller");
 const  userRoutes = [
     {
         method: "GET", 

@@ -1,4 +1,5 @@
 'use strict';
+const {deeplinkRoutes} =  require("./routes/deeplink.routes")
 
 const hapi = require("@hapi/hapi");
 const {userRoutes} = require("./routes/user-routes");
@@ -13,7 +14,7 @@ const init = async () => {
     });
     console.log(process.env.PORT)
     server.start()
-    .then((val) => {
+    .then(() => {
         console.log("hapi is listening on port:", server.info.port)
     })
     .catch((e) => {
@@ -24,7 +25,8 @@ const init = async () => {
 
 
     server.route([
-       ...userRoutes
+       ...userRoutes,
+       ...deeplinkRoutes
     ])
 }
 //

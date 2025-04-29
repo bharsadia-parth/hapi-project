@@ -31,4 +31,4 @@ const UserModel = sequelize.define('users', {
 
 sequelize.sync();
 
-module.exports = {UserModel}
+module.exports = { UserModel }

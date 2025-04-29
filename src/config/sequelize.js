@@ -1,4 +1,3 @@
-const { MySqlDialect } = require("@sequelize/mysql");
 const { Sequelize } = require("sequelize");
 require('dotenv').config()
 
