@@ -11,12 +11,12 @@ export const deeplinkRoutes = [
         handler: getDeeplink,
     },
     {
-        method: "POST", 
+        method: "PUT", 
         path: "/deeplink/{id}",
         handler: updateDeeplink,
     },
     {
-        method: "PUT", 
+        method: "POST", 
         path: "/deeplink",
         handler: creeateDeeplink,
     },

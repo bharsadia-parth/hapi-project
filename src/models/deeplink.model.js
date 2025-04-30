@@ -10,6 +10,11 @@ export const deepLinkModel = sequelize.define("deeplinks", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  identifier: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
   destination_type: {
     type: DataTypes.ENUM(
       "SIP",

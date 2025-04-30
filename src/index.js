@@ -11,7 +11,12 @@ env.config({path: "./.env"});
 const init = async () => {
     const server = hapi.server({
         port: process.env.PORT,
-        host: '0.0.0.0'
+        host: '0.0.0.0',
+        routes: {
+            cors:{
+                origin: ['*']
+            }
+        }
     });
     console.log(process.env.PORT)
     server.start()

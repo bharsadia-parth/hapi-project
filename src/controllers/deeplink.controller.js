@@ -27,7 +27,7 @@ export const getDeeplink = async (req, res) => {
 
 export const creeateDeeplink = async (req, res) => {
   try {
-    const { path, destination_type, description, params, redirect_install } =
+    const { path, destination_type, identifier, description, params, redirect_install } =
       req.payload;
     const shortcode = generateShortcode(path);
 
@@ -36,6 +36,7 @@ export const creeateDeeplink = async (req, res) => {
       destination_type,
       description,
       params,
+      identifier,
       redirect_install,
       shortcode,
     });
@@ -91,10 +92,10 @@ export const updateDeeplink = async (req, res) => {
     if (isNaN(id)) {
       return res.response({ err: "Invalid id" }).code(400);
     }
-    const { path, destination_type, description, params, redirect_install } =
+    const { path, destination_type, identifier, description, params, redirect_install } =
       req.payload;
     const result = await deepLinkModel.update(
-      { path, destination_type, description, params, redirect_install },
+      { path, destination_type, description, identifier, params, redirect_install },
       { where: { id } }
     );
     if(!result[0]){
